@@ -91,7 +91,7 @@ const Cadastro = ({navigation}) => {
                    value={senha}
                    secure="true"
             />
-            <Input style={Styles.Input}
+            <Input style={Style.Input}
                    placeholder="Confirmar Senha"
                    onChangeText={setConfirmarSenha}
                    value={confirmarSenha}

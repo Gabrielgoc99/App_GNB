@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, Animated, TouchableOpacity } from 'react-native';
+import { Text, View, Animated } from 'react-native';
 import Styles from '../Styles';
 import { useState } from 'react';
 import { tamanhos } from '../Tamanhos';
@@ -22,6 +22,7 @@ const Home = ({navigation}) => {
             navigation.navigate("Login")
 
         } else {
+          alert ("Erro!")
            
         }
     });

@@ -14,8 +14,8 @@ import {signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = ({navigation}) => {
 
-    const [usuario, setEmail] = useState("");
-    const [senha, setSenha] = useState(null);
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
     const [altura] = useState(new Animated.Value(20));
     const [largura] = useState(new Animated.Value(20));
     const [banner] = useState (new Animated.Value(50));
@@ -33,7 +33,7 @@ const Login = ({navigation}) => {
     if (email != "" && senha != "") {
         signInWithEmailAndPassword(auth, email, senha)
             .then((userCredential) => {
-                // Signed in
+                
                 const user = userCredential.user;
                 navigation.navigate("Home")
 
@@ -48,13 +48,7 @@ const Login = ({navigation}) => {
     } else {
         alert("Digite seu email e senha cadastrados!")
     }
-
-
-    }
-
-  
-
-    
+    }    
 
     Animated.timing(largura, {
         toValue: tamanhos.padraoLarguraCadastro,
@@ -80,13 +74,14 @@ const Login = ({navigation}) => {
             
             <Input style={Styles.Input}            
                 placeholder="Usuário"
-                onChangeText={setUsuario}
-                value={usuario}
+                onChangeText={setEmail}
+                value={email}
             />
             <Input style={Styles.Input}
                 placeholder="Senha"
                 onChangeText={setSenha}
                 value={senha}
+                secure="true"
             />
             <Botao style={Styles.botao}
                 cor={colors.botaoAzul}
