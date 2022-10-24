@@ -7,9 +7,26 @@ import { Botao } from '../Botao';
 import { colors } from '../Colors';
 import { useRef } from 'react';
 import { Modalize } from 'react-native-modalize';
+import { auth } from './Config/FirebaseConfig';
+import {onAuthStateChanged} from "firebase/auth";
 
 
 const Home = ({navigation}) => {
+
+  const Logoff = () => {
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            
+            const uid = user.uid;
+            navigation.navigate("Login")
+
+        } else {
+           
+        }
+    });
+
+}
 
 const modalizeRef = useRef(null);
 
@@ -96,6 +113,12 @@ const modalizeRef = useRef(null);
                 cor={colors.botaoVermelho}
                 label="Abrir Conta"
                 action={() => navigation.navigate("Conta")}
+        />
+
+        <Botao style={Styles.botao}
+                cor={colors.botaoVermelho}
+                label="Logoff"
+                action={Logoff}
         />
         <Animated.Image source={require("../../assets/Goliath_Tower.png")}
                             style={{alignSelf: 'center', width: larguraTower, height: alturaTower, marginBottom: 10, marginTop: 10}}

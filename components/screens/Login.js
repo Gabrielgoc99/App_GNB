@@ -7,19 +7,54 @@ import Home from "./Home";
 import Styles from "../Styles";
 import { colors } from "../Colors";
 import { tamanhos } from '../Tamanhos';
-//import firebase from 'firebase';
-
+import {useIsFocused} from '@react-navigation/native';
+import {auth} from './Config/FirebaseConfig';
+import {signInWithEmailAndPassword } from "firebase/auth";
 
 
 const Login = ({navigation}) => {
 
-  
-
-    const [usuario, setUsuario] = useState("");
+    const [usuario, setEmail] = useState("");
     const [senha, setSenha] = useState(null);
     const [altura] = useState(new Animated.Value(20));
     const [largura] = useState(new Animated.Value(20));
     const [banner] = useState (new Animated.Value(50));
+    const isFocused = useIsFocused();
+
+    useEffect(() => {
+        if (isFocused) {
+            setEmail("")
+            setSenha("")      
+        }
+    }, [isFocused])
+
+  const Logar = ()=>{    
+
+    if (email != "" && senha != "") {
+        signInWithEmailAndPassword(auth, email, senha)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                navigation.navigate("Home")
+
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+
+                alert("Email ou Senha invalidos, tente novamente!")
+            });
+
+    } else {
+        alert("Digite seu email e senha cadastrados!")
+    }
+
+
+    }
+
+  
+
+    
 
     Animated.timing(largura, {
         toValue: tamanhos.padraoLarguraCadastro,
@@ -56,7 +91,7 @@ const Login = ({navigation}) => {
             <Botao style={Styles.botao}
                 cor={colors.botaoAzul}
                 label="Entrar"
-                action={() => navigation.navigate("Home")}
+                action={Logar}
             />
             <Botao style={Styles.botao}
                 cor={colors.botaoVermelho}

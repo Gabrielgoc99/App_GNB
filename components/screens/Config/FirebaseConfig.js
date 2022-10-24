@@ -1,7 +1,7 @@
-//import { initializeApp } from 'firebase/app';
-//import { getAuth } from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
 
-/*const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyBylvmvhBAExJYVSKWEBXP9I8pSXRsQwUQ",
   authDomain: "auth-gnb.firebaseapp.com",
   projectId: "auth-gnb",
@@ -13,4 +13,3 @@
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-*/
