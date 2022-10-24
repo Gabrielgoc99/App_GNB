@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "TrabalhoFinal",
-    "slug": "TrabalhoFinal",
+    "name": "App_GNB",
+    "slug": "App_GNB",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
